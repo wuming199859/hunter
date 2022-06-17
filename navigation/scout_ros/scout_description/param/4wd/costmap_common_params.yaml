@@ -1,0 +1,11 @@
+#move_base 在全局路径规划与本地路径规划时调用的通用参数，包括:机器人的尺寸、距离障碍物的安全距离、传感器信息等
+obstacle_range: 1.5 #2.5  # 用于障碍物探测，比如: 值为 3.0，意味着动态检测到距离小于 3 米的障碍物时，就会引入代价地图
+raytrace_range: 3.5 #3.5   # 用于清除障碍物，比如：值为 3.5，意味着动态清除代价地图中 3.5 米以外的障碍物
+footprint: [[-0.35, -0.29], [-0.35, 0.29], [0.35, 0.29], [0.35, -0.29]] # 四个角的坐标
+inflation_radius: 0.3  #膨胀半径，扩展在碰撞区域以外的代价区域，使得机器人规划路径避开障碍物
+transform_tolerance: 0.13 #0.13  #代价比例系数，越大则代价值越小
+
+observation_sources: scan  #导航包所需要的传感器
+scan: {sensor_frame: laser, data_type: LaserScan, topic: rslidar/scan, marking: true, clearing: true}
+#对传感器的坐标系和数据进行配置。这个也会用于代价地图添加和清除障碍物。例如，你可以用激光雷达传感器用于在代价地图添加障碍物，再添加kinect用于导航和清除障碍物。
+map_type: costmap  #地图类型

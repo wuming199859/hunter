@@ -1,0 +1,18 @@
+<launch>
+	<include file="$(find yocs_velocity_smoother)/launch/velocity_smoother.launch">
+
+	    <arg name="node_name"             value="velocity_smoother"/>
+
+	    <arg name="nodelet_manager_name"  value="nodelet_manager"/>
+
+	    <arg name="config_file"           value="$(find scout_description)/param/velocity_smoother.yaml"/>  //配置参数的yaml文件
+
+	    <arg name="raw_cmd_vel_topic"     value="cmd_vel"/>
+
+	    <arg name="smooth_cmd_vel_topic"  value="smooth_cmd_vel"/>
+
+	    <arg name="robot_cmd_vel_topic"   value="cmd_vel"/>
+
+	    <arg name="odom_topic"            value="odom"/>
+	</include>
+</launch>
